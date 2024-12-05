@@ -31,7 +31,8 @@ export class InventoryPage {
   async addAllItemsToCart() {
     const itemCount = await this.inventoryItems.count();
     for (let i = 0; i < itemCount; i++) {
-      await this.primaryButton.nth(i).click();
+      console.log(`Adding item ${i + 1} to the cart`);
+      await this.primaryButton.nth(0).click(); // Always add the first available item
       await expect(this.shoppingCartBadge).toHaveText((i + 1).toString());
     }
   }
